@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/layout.astro"
+import Header from '../components/header.astro';
+import Starfield from "../components/starfield.astro";
+import GitHubCorner from "../components/github-corner.astro";
+import List from "../components/list.astro";
+import Techstack from "../components/techstack.astro";
+import portfolio from '../data/portfolio.json';
+import Footer from '../components/footer.astro';
+
+const my_portfolio = portfolio;
+---
+<Layout title="astro-web">
+    <section class="relative h-full bg-black">
+        <Starfield />
+        <GitHubCorner />
+        <div class="relative h-full">
+            <Header />
+            <List 
+              title={my_portfolio.title} 
+              items={my_portfolio.items} 
+            />
+            <Techstack />
+            <Footer />
+        </div>
+    </section>
+</Layout>
+
+
+

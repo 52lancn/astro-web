@@ -1,0 +1,23 @@
+{
+    "title":"个人作品", 
+    "items":[
+        {
+            "title":"vue-admin", 
+            "description":"基于Vue3的中后台系统" , 
+            "url":"https://vue-admin.52lan.cn", 
+            "github": "https://github.com/52lancn/vue-admin"
+        },
+        {
+            "title":"astro-web", 
+            "description":"基于astro的前台网站" , 
+            "url":"https://52lan.cn", 
+            "github": "https://github.com/52lancn/astro-web"
+        },
+        {
+            "title":"go-api", 
+            "description":"基于golang的后端服务api" , 
+            "url":"", 
+            "github": "https://github.com/52lancn/go-api"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+---
+import UserProfileImage from '../assets/logo.png'
+---
+
+<header class="w-full h-96 flex flex-row justify-center items-center gap-4">
+    <div class="astronaut p-1.5 rounded-full shadow-[10px_10px_50px_-12px_rgb(0,0,0,0.25)] shadow-purple-700">
+        <figure class="w-24 h-24 rounded-full overflow-hidden">
+            <img class="w-full object-cover object-center" src={UserProfileImage.src} alt="This is me!">
+        </figure>
+    </div>
+    <div class="astronaut2">
+        <h1 class="animate-pulse gradient-text text-center font-extrabold tracking-tighter text-6xl">52lancn</h1>
+    </div>
+    <div class="absolute z-10 w-full text-center animate-pulse self-end mb-10">您好！欢迎光临 👋🏻</div>
+</header>
+
+<style>
+  @keyframes float {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 30px, 0);
+    }
+  }
+
+  .astronaut {
+    animation: float 2.5s linear 0s infinite alternate;
+  }
+  .astronaut2 {
+    animation: float 2.5s linear 0.5s infinite alternate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .astronaut {
+      @apply animate-none;
+    }
+  }
+</style>

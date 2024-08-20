@@ -1,0 +1,30 @@
+---
+import Portfolio from "./portfolio.astro";
+
+interface Props {
+	title: string;
+    items: any[];
+}
+const { title, items } = Astro.props;
+
+---
+
+<div class="w-full flex flex-col items-center gap-4 pb-4">
+    <div class="flex flex-col items-center gap-4 max-w-6xl p-4 bg-gray-800 bg-opacity-30 rounded-lg">
+        <h1 class="text-xl font-bold text-center text-white">{title}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {
+                items.map((item) => {
+                    return (
+                        <Portfolio 
+                            title={item.title} 
+                            description={item.description} 
+                            url={item.url}
+                            github={item.github} 
+                        ></Portfolio>
+                    )
+                })
+            }
+        </div>
+    </div>
+</div>
