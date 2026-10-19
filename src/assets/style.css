@@ -157,16 +157,23 @@ a:focus-visible,
   max-width: 100%;
   transition: filter 0.3s ease, transform 0.3s ease;
 }
-/* Gentle floating wrapper so hover scale on the svg doesn't fight the animation */
+/* Gentle floating wrapper so hover scale on the img doesn't fight the animation.
+   Drifts a few px in a small loop; each chip gets a slightly different path/delay
+   so the set feels organically buoyant rather than synchronized. */
 .tech-logo-wrap {
   display: inline-flex;
-  animation: logo-float 5s ease-in-out infinite;
+  animation: logo-drift 6s ease-in-out infinite;
 }
-.group\/tech:nth-child(2n) .tech-logo-wrap { animation-delay: -1.6s; }
-.group\/tech:nth-child(3n) .tech-logo-wrap { animation-delay: -3.1s; }
-@keyframes logo-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+.group\/tech:nth-child(4n+1) .tech-logo-wrap { animation-duration: 5.4s; animation-delay: -0.4s; }
+.group\/tech:nth-child(4n+2) .tech-logo-wrap { animation-duration: 6.6s; animation-delay: -2.1s; }
+.group\/tech:nth-child(4n+3) .tech-logo-wrap { animation-duration: 5.8s; animation-delay: -3.7s; }
+.group\/tech:nth-child(4n+4) .tech-logo-wrap { animation-duration: 7s;   animation-delay: -1.2s; }
+
+@keyframes logo-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25%      { transform: translate3d(2px, -4px, 0); }
+  50%      { transform: translate3d(-1px, -6px, 0); }
+  75%      { transform: translate3d(-3px, -2px, 0); }
 }
 .group\/tech:hover .tech-logo {
   filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.55));
