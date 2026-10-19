@@ -3,8 +3,18 @@
 // logo 统一存放于 /public/logos（从各技术官网下载的品牌 SVG / 官方图标）
 const groups = [
   {
-    title: "前端框架 & 语言",
-    desc: "构建现代化用户界面的核心",
+    title: "AI 能力",
+    desc: "智能体与 AI 编程工具",
+    items: [
+      { name: "OpenClaw", logo: "/logos/openclaw.svg", href: "https://openclaw.ai/" },
+      { name: "WorkBuddy", logo: "/logos/workbuddy.svg", href: "https://www.workbuddy.cn/" },
+      { name: "Cursor", logo: "/logos/cursor.svg", href: "https://cursor.com/" },
+      { name: "DeepSeek", logo: "/logos/deepseek.svg", href: "https://www.deepseek.com/" },
+    ],
+  },
+  {
+    title: "框架能力",
+    desc: "前端框架、UI 组件与开发语言",
     items: [
       { name: "Vue 3", logo: "/logos/vue.svg", href: "https://vuejs.org/" },
       { name: "React 18", logo: "/logos/react.svg", href: "https://react.dev/" },
@@ -12,12 +22,6 @@ const groups = [
       { name: "TypeScript", logo: "/logos/typescript.svg", href: "https://www.typescriptlang.org/" },
       { name: "uni-app", logo: "/logos/uniapp.png", href: "https://uniapp.dcloud.net.cn/" },
       { name: "C#", logo: "/logos/csharp.svg", href: "https://learn.microsoft.com/dotnet/csharp/" },
-    ],
-  },
-  {
-    title: "工程化 & UI",
-    desc: "开发体验与组件体系",
-    items: [
       { name: "Vite", logo: "/logos/vite.svg", href: "https://vitejs.dev/" },
       { name: "Tailwind CSS", logo: "/logos/tailwindcss.svg", href: "https://tailwindcss.com/" },
       { name: "Arco Design", logo: "/logos/arco.ico", href: "https://arco.design/" },
@@ -28,24 +32,14 @@ const groups = [
     ],
   },
   {
-    title: "后端 & 基础设施",
-    desc: "服务端能力与部署运维",
+    title: "技术能力",
+    desc: "后端框架与基础设施",
     items: [
       { name: "Go · go-zero", logo: "/logos/go.svg", href: "https://go-zero.dev/" },
       { name: "GoFrame", logo: "/logos/goframe.ico", href: "https://goframe.org/" },
       { name: "Docker", logo: "/logos/docker.svg", href: "https://www.docker.com/" },
       { name: "MySQL", logo: "/logos/mysql.svg", href: "https://www.mysql.com/" },
       { name: "Redis", logo: "/logos/redis.svg", href: "https://redis.io/" },
-    ],
-  },
-  {
-    title: "AI 工具",
-    desc: "智能体与 AI 编程",
-    items: [
-      { name: "OpenClaw", logo: "/logos/openclaw.svg", href: "https://openclaw.ai/" },
-      { name: "WorkBuddy", logo: "/logos/workbuddy.svg", href: "https://www.workbuddy.cn/" },
-      { name: "Cursor", logo: "/logos/cursor.svg", href: "https://cursor.com/" },
-      { name: "DeepSeek", logo: "/logos/deepseek.svg", href: "https://www.deepseek.com/" },
     ],
   },
 ];
