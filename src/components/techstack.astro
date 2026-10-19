@@ -1,34 +1,82 @@
 ---
-import IcoAstro from "./icons/icoastro.astro";
-import IcoTailwind from "./icons/icotailwind.astro";
-import IcoAcro from "./icons/icoacro.astro";
-import IcoGo from "./icons/icogo.astro";
-import IcoLaravel from "./icons/icolaravel.astro";
-import IcoUniapp from "./icons/icouniapp.astro";
-
+// 主要技术库：依据 GitHub @52lancn 真实项目整理，仅保留日常主力
+// logo 统一存放于 /public/logos（从各技术官网下载的品牌 SVG / 官方图标）
+const groups = [
+  {
+    title: "前端框架 & 语言",
+    desc: "构建现代化用户界面的核心",
+    items: [
+      { name: "Astro", logo: "/logos/astro.svg", href: "https://astro.build/" },
+      { name: "shadcn/ui", logo: "/logos/shadcn.png", href: "https://ui.shadcn.com/" },
+      { name: "Arco Design", logo: "/logos/arco.ico", href: "https://arco.design/" },
+      { name: "TypeScript", logo: "/logos/typescript.svg", href: "https://www.typescriptlang.org/" },
+      { name: "Vue 3", logo: "/logos/vue.svg", href: "https://vuejs.org/" },
+      { name: "React 18", logo: "/logos/react.svg", href: "https://react.dev/" },
+      { name: "Tailwind CSS", logo: "/logos/tailwindcss.svg", href: "https://tailwindcss.com/" },
+    ],
+  },
+  {
+    title: "后端 & 基础设施",
+    desc: "服务端能力与部署运维",
+    items: [
+      { name: "Go · go-zero", logo: "/logos/go.svg", href: "https://go-zero.dev/" },
+      { name: "Docker", logo: "/logos/docker.svg", href: "https://www.docker.com/" },
+      { name: "MySQL", logo: "/logos/mysql.svg", href: "https://www.mysql.com/" },
+      { name: "Redis", logo: "/logos/redis.svg", href: "https://redis.io/" },
+    ],
+  },
+  {
+    title: "工程化 & UI",
+    desc: "开发体验与组件体系",
+    items: [
+      { name: "Vite", logo: "/logos/vite.svg", href: "https://vitejs.dev/" },
+      { name: "Pinia", logo: "/logos/pinia.svg", href: "https://pinia.vuejs.org/" },
+      { name: "ECharts", logo: "/logos/echarts.svg", href: "https://echarts.apache.org/" },
+    ],
+  },
+];
 ---
-<div class="w-full flex flex-col items-center gap-4 pb-4">
-    <div class="flex flex-col items-center gap-4 max-w-6xl p-4">
-        <h1 class="text-xl font-bold text-left text-white">技术栈</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-                <a class="acro-logo" href="https://www.arco.design/" target="_blank"><IcoAcro /></a>
-            </div>
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-                <a class="astro-logo" href="https://astro.build/" target="_blank"><IcoAstro /></a>
-            </div>
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-               <a class="tailwind-logo" href="https://www.tailwindcss.cn/" target="_blank"><IcoTailwind /></a>
-            </div>
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-               <a class="laravel-logo" href="https://uniapp.dcloud.net.cn/" target="_blank"><IcoUniapp /></a>
-            </div>
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-               <a class="laravel-logo" href="https://laravel-docs.catchadmin.com/" target="_blank"><IcoLaravel /></a>
-            </div>
-            <div class="flex flex-col items-start justify-center bg-gray-800 bg-opacity-80 rounded-lg p-2 align-middle">
-               <a class="go-logo" href="http://www.topgoer.com/" target="_blank"><IcoGo /></a>
-            </div>
+<section id="tech" class="mx-auto w-full max-w-6xl px-6 py-16">
+  <div class="mb-10 text-center">
+    <span class="kicker">Tech Stack</span>
+    <h2 class="section-title mt-2">技术栈</h2>
+    <p class="mx-auto mt-3 max-w-lg text-sm text-offset">日常主力技术库</p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    {
+      groups.map((g) => (
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20">
+          <div class="mb-5">
+            <h3 class="font-display text-base font-semibold text-white">{g.title}</h3>
+            <p class="mt-1 text-xs text-offset">{g.desc}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            {
+              g.items.map((t) => (
+                <a
+                  href={t.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group/tech flex flex-col items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.02] py-4 text-white transition duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.06]"
+                >
+                  <div class="flex h-10 items-center justify-center">
+                    <span class="tech-logo-wrap">
+                      <img
+                        src={t.logo}
+                        alt={t.name}
+                        loading="lazy"
+                        class="tech-logo transition-transform duration-300 group-hover/tech:scale-110"
+                      />
+                    </span>
+                  </div>
+                  <span class="text-[11px] text-offset">{t.name}</span>
+                </a>
+              ))
+            }
+          </div>
         </div>
-    </div>
-</div>
+      ))
+    }
+  </div>
+</section>

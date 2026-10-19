@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# workbuddy project data
+.workbuddy/
+
+# using npm now
+pnpm-lock.yaml

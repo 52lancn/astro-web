@@ -1,32 +1,224 @@
-[data-theme="light"] {
-    --color-primary: theme("colors.pink.500");
-    --color-secondary: theme("colors.indigo.500");
-    --color-text: theme("colors.gray.900");
-    --color-text-offset: theme("colors.gray.600");
-    --color-background: theme("colors.gray.50");
-    --color-background-offset: theme("colors.gray.100");
-    --color-border: theme("colors.gray.900" / 10%);
-  }
-  
-  [data-theme="dark"] {
-    --color-primary: theme("colors.pink.400");
-    --color-secondary: theme("colors.indigo.400");
-    --color-text: theme("colors.gray.50");
-    --color-text-offset: theme("colors.gray.400");
-    --color-background: theme("colors.gray.900");
-    --color-background-offset: theme("colors.gray.800");
-    --color-border: theme("colors.gray.50" / 10%);
-  }
-  
-/* TODO: consider creating <Button> and <GradientText> components */
-a,
-.btn {
-  @apply transition-colors duration-200;
-  @apply hover:text-secondary;
-  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-transparent;
+@import "tailwindcss";
+
+@source "../**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}";
+
+/* Custom design tokens. The @theme variables forward to the theme-scoped
+   variables defined per data-theme below, so utilities pick up the active theme. */
+@theme {
+  /* widen the content column from the default 6xl (72rem) to 85rem */
+  --container-6xl: 85rem;
+  --color-default: var(--theme-bg);
+  --color-body: var(--theme-text);
+  --color-offset: var(--theme-text-offset);
+  --color-primary: var(--theme-primary);
+  --color-secondary: var(--theme-secondary);
+  --color-border: var(--theme-border);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
+[data-theme="light"] {
+  --theme-bg: #f9fafb; /* gray.50 */
+  --theme-text: #111827; /* gray.900 */
+  --theme-text-offset: #4b5563; /* gray.600 */
+  --theme-primary: #ec4899; /* pink.500 */
+  --theme-secondary: #6366f1; /* indigo.500 */
+  --theme-border: rgba(17, 24, 39, 0.1);
+}
+
+[data-theme="dark"] {
+  --theme-bg: #0a0a12; /* deep space */
+  --theme-text: #f9fafb; /* gray.50 */
+  --theme-text-offset: #9ca3af; /* gray.400 */
+  --theme-primary: #f472b6; /* pink.400 */
+  --theme-secondary: #818cf8; /* indigo.400 */
+  --theme-border: rgba(249, 250, 251, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--theme-secondary);
+  border-radius: 0.5rem;
+}
+
+/* Premium gradient text with a slow diagonal shine sweep */
 .gradient-text {
-  @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-cyan-500 via-purple-500 to-rose-500;
+  background-image: linear-gradient(115deg, #22d3ee, #a855f7, #ec4899, #a855f7, #22d3ee);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-position: 0% 50%;
+  animation: title-sweep 7s linear infinite;
+}
+.gradient-text:hover {
+  animation-duration: 2.6s;
+}
+@keyframes title-sweep {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Eyebrow / kicker */
+.kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c084fc;
+}
+
+/* Section title */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f9fafb;
+}
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Decorative backgrounds */
+.bg-aurora {
+  background-color: #06060e;
+  background-image: radial-gradient(55% 45% at 50% 108%, rgba(236, 72, 153, 0.07), transparent 60%);
+  overflow: hidden;
+}
+/* Two slowly drifting aurora blobs */
+.bg-aurora::before,
+.bg-aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+  pointer-events: none;
+}
+.bg-aurora::before {
+  width: 55vw;
+  height: 55vw;
+  top: -12%;
+  left: -6%;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.22), rgba(34, 211, 238, 0) 70%);
+  animation: aurora-drift-1 20s ease-in-out infinite alternate;
+}
+.bg-aurora::after {
+  width: 60vw;
+  height: 60vw;
+  bottom: -18%;
+  right: -10%;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.26), rgba(168, 85, 247, 0) 70%);
+  animation: aurora-drift-2 26s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift-1 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(10vw, 7vh, 0) scale(1.18); }
+}
+@keyframes aurora-drift-2 {
+  from { transform: translate3d(0, 0, 0) scale(1.08); }
+  to   { transform: translate3d(-9vw, -6vh, 0) scale(1.22); }
+}
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-pan 45s linear infinite;
+}
+@keyframes grid-pan {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+.bg-grid-mask {
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+}
+
+/* Brand logo sizing inside tech chips */
+.tech-logo {
+  height: 2.25rem;
+  width: auto;
+  max-width: 100%;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+/* Gentle floating wrapper so hover scale on the svg doesn't fight the animation */
+.tech-logo-wrap {
+  display: inline-flex;
+  animation: logo-float 5s ease-in-out infinite;
+}
+.group\/tech:nth-child(2n) .tech-logo-wrap { animation-delay: -1.6s; }
+.group\/tech:nth-child(3n) .tech-logo-wrap { animation-delay: -3.1s; }
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.group\/tech:hover .tech-logo {
+  filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.55));
+}
+
+/* Portfolio card: glowing light that runs around the border on hover */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0%,
+    rgba(34, 211, 238, 0) 10%,
+    #22d3ee 22%,
+    #a855f7 33%,
+    #ec4899 43%,
+    transparent 56%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.portfolio-card:hover::before {
+  opacity: 1;
+  animation: border-spin 3.2s linear infinite;
+}
+@keyframes border-spin {
+  to { --angle: 360deg; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .bg-aurora::before,
+  .bg-aurora::after,
+  .bg-grid,
+  .tech-logo-wrap,
+  .portfolio-card:hover::before,
+  .gradient-text {
+    animation: none !important;
+  }
 }

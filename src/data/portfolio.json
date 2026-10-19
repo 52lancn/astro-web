@@ -1,23 +1,26 @@
 {
-    "title":"个人作品", 
+    "title":"个人作品",
     "items":[
         {
-            "title":"vue-admin", 
-            "description":"基于Vue3的中后台系统" , 
-            "url":"https://vue-admin.52lan.cn", 
-            "github": "https://github.com/52lancn/vue-admin"
+            "title":"shadcn-admin",
+            "description":"基于 shadcn/ui + go-zero 的全栈管理后台：React 18 + TypeScript + Vite 前端，Go 后端 + MySQL + Redis，Docker Compose 一键启动" ,
+            "url":"https://shadcn-admin.52lan.cn",
+            "github": "https://github.com/52lancn/shadcn-admin",
+            "stack": ["React", "TypeScript", "Go", "MySQL", "Redis", "Docker"]
         },
         {
-            "title":"astro-web", 
-            "description":"基于astro的前台网站" , 
-            "url":"https://52lan.cn", 
-            "github": "https://github.com/52lancn/astro-web"
+            "title":"vue-admin",
+            "description":"基于 Vue 3 + TypeScript + Vite + Arco Design Vue 构建的现代化中后台管理系统模板，内置权限、ECharts 可视化与多环境部署" ,
+            "url":"https://vue-admin.52lan.cn",
+            "github": "https://github.com/52lancn/vue-admin",
+            "stack": ["Vue 3", "TypeScript", "Vite", "Arco Design", "ECharts", "Pinia"]
         },
         {
-            "title":"go-api", 
-            "description":"基于golang的后端服务api" , 
-            "url":"", 
-            "github": "https://github.com/52lancn/go-api"
+            "title":"astro-web",
+            "description":"基于 Astro 7 + Tailwind CSS 4 构建的个人作品展示静态站点（即本仓库）" ,
+            "url":"https://52lan.cn",
+            "github": "https://github.com/52lancn/astro-web",
+            "stack": ["Astro", "Tailwind CSS", "TypeScript"]
         }
     ]
 }
