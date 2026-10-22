@@ -5,6 +5,7 @@ const groups = [
   {
     title: "AI 能力",
     desc: "智能体与 AI 编程工具",
+    cols: 2,
     items: [
       { name: "OpenClaw", logo: "/logos/openclaw.svg", href: "https://openclaw.ai/" },
       { name: "WorkBuddy", logo: "/logos/workbuddy.svg", href: "https://www.workbuddy.cn/" },
@@ -13,30 +14,24 @@ const groups = [
     ],
   },
   {
-    title: "前端与 UI 框架",
-    desc: "构建界面与组件体系的核心框架",
-    items: [
-      { name: "Vue 3", logo: "/logos/vue.svg", href: "https://vuejs.org/" },
-      { name: "React 18", logo: "/logos/react.svg", href: "https://react.dev/" },
-      { name: "Astro", logo: "/logos/astro.svg", href: "https://astro.build/" },
-      { name: "TypeScript", logo: "/logos/typescript.svg", href: "https://www.typescriptlang.org/" },
-      { name: "uni-app", logo: "/logos/uniapp.png", href: "https://uniapp.dcloud.net.cn/" },
-      { name: "Vite", logo: "/logos/vite.svg", href: "https://vitejs.dev/" },
-      { name: "Tailwind CSS", logo: "/logos/tailwindcss.svg", href: "https://tailwindcss.com/" },
-      { name: "Arco Design", logo: "/logos/arco.ico", href: "https://arco.design/" },
-      { name: "shadcn/ui", logo: "/logos/shadcn.png", href: "https://ui.shadcn.com/" },
-      { name: "Pinia", logo: "/logos/pinia.svg", href: "https://pinia.vuejs.org/" },
-      { name: "ECharts", logo: "/logos/echarts.svg", href: "https://echarts.apache.org/" },
-    ],
-  },
-  {
-    title: "后端与基础设施",
-    desc: "服务端框架、桌面框架与基础设施",
+    title: "技术大全",
+    desc: "日常主力技术库",
+    cols: 3,
     items: [
       { name: "C#", logo: "/logos/csharp.svg", href: "https://learn.microsoft.com/dotnet/csharp/" },
       { name: "WinForms", logo: "/logos/dotnet.svg", href: "https://learn.microsoft.com/dotnet/desktop/winforms/" },
       { name: "Go · go-zero", logo: "/logos/go.svg", href: "https://go-zero.dev/" },
       { name: "GoFrame", logo: "/logos/goframe.ico", href: "https://goframe.org/" },
+      { name: "uni-app", logo: "/logos/uniapp.png", href: "https://uniapp.dcloud.net.cn/" },
+      { name: "Vue 3", logo: "/logos/vue.svg", href: "https://vuejs.org/" },
+      { name: "Arco Design", logo: "/logos/arco.ico", href: "https://arco.design/" },
+      { name: "React 18", logo: "/logos/react.svg", href: "https://react.dev/" },
+      { name: "shadcn/ui", logo: "/logos/shadcn.png", href: "https://ui.shadcn.com/" },
+      { name: "Astro", logo: "/logos/astro.svg", href: "https://astro.build/" },
+      { name: "Tailwind CSS", logo: "/logos/tailwindcss.svg", href: "https://tailwindcss.com/" },
+      { name: "TypeScript", logo: "/logos/typescript.svg", href: "https://www.typescriptlang.org/" },
+      { name: "Vite", logo: "/logos/vite.svg", href: "https://vitejs.dev/" },
+      { name: "Pinia", logo: "/logos/pinia.svg", href: "https://pinia.vuejs.org/" },
       { name: "Docker", logo: "/logos/docker.svg", href: "https://www.docker.com/" },
       { name: "MySQL", logo: "/logos/mysql.svg", href: "https://www.mysql.com/" },
       { name: "Redis", logo: "/logos/redis.svg", href: "https://redis.io/" },
@@ -51,7 +46,7 @@ const groups = [
     <p class="mx-auto mt-3 max-w-lg text-sm text-offset">日常主力技术库</p>
   </div>
 
-  <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
     {
       groups.map((g) => (
         <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-white/20">
@@ -59,7 +54,7 @@ const groups = [
             <h3 class="font-display text-base font-semibold text-white">{g.title}</h3>
             <p class="mt-1 text-xs text-offset">{g.desc}</p>
           </div>
-          <div class="grid grid-cols-2 gap-3">
+          <div class={`grid grid-cols-2 gap-3 ${g.cols === 3 ? "sm:grid-cols-3" : ""}`}>
             {
               g.items.map((t) => (
                 <a
